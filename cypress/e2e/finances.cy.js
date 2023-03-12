@@ -16,10 +16,22 @@ describe('Transações',()=>{
     cy.get('tbody tr td.description').should('have.text', 'Freela')
   })
 
-  it('Cadastrar te saída', () => {
+  it('Cadastrar uma saída', () => {
     criarTransacao('Cinema', -40)
 
     cy.get('tbody tr td.description').should('have.text', 'Cinema')
+  })
+
+  it('Exluir transação',()=>{
+    criarTransacao('Freela',100)
+    criarTransacao('Mesada',10)
+
+    cy.contains('.description','Freela')
+    .parent()
+    .find('img')
+    .click()
+
+    cy.get('tbody tr').should('have.length',1)
   })
   
 })

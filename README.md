@@ -24,3 +24,7 @@ Abrir o Cypress
 ```
 npx cypress open
 ```
+ Executar no modo headless
+ ```
+  npx cypress run
+```
