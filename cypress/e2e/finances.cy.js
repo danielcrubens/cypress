@@ -1,5 +1,14 @@
 describe('Transações',()=>{
-
+ //hooks -> executar antes ou depois/ de cada ou de todos os teste
+  //beefor
+  //after
+  //beforeEach
+  //afterEach
+  
+  beforeEach(()=>{
+    cy.visit("https://devfinance-agilizei.netlify.app/")
+  
+  })
 
   it('Cadastrar uma entrada', () => {
     criarTransacao('Freela', 250)
