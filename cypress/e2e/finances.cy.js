@@ -1,16 +1,25 @@
 describe('Transações',()=>{
-  it('Cadastrar uma entrada',()=>{
-    cy.visit("https://devfinance-agilizei.netlify.app/")
 
-    cy.contains("Nova Transação").click()
-    cy.get('#description').type('Freela')
-    cy.get('#amount').type(250)
-    cy.get('#date').type('2023-03-11')
 
-    cy.contains('button','Salvar').click()
-
-    cy.get('tbody tr td.description').should('have.text','Freela')
+  it('Cadastrar uma entrada', () => {
+    criarTransacao('Freela', 250)
+    
+    cy.get('tbody tr td.description').should('have.text', 'Freela')
   })
 
+  it('Cadastrar te saída', () => {
+    criarTransacao('Cinema', -40)
+
+    cy.get('tbody tr td.description').should('have.text', 'Cinema')
+  })
   
 })
+
+function criarTransacao(descricao, valor) {
+  cy.contains("Nova Transação").click()
+  cy.get('#description').type(descricao)
+  cy.get('#amount').type(valor)
+  cy.get('#date').type('2023-03-11')
+  cy.contains('button', 'Salvar').click()
+
+}
